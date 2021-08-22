@@ -29,7 +29,7 @@
                 }while(check[num]==2);//repetido
                 check[num]++;
                 datos[i][j]=num;
-                texto+="<td>"+"<img class='carta' src='Img/"+num+".jpg'></td>";
+                texto+="<td>"+"<img class='carta' src='img/"+num+".jpg'></td>";
                     
             }
             texto+="</tr>";
@@ -51,7 +51,7 @@
 
                 for(j=0; j< 4; j++)
                 {
-                    texto+="<td>"+"<img src='Img/oculta.jpg' class='carta' id='"+num+"' onclick='voltear("+num+","+i+","+j+")'></td>";
+                    texto+="<td>"+"<img src='img/oculta.jpg' class='carta' id='"+num+"' onclick='voltear("+num+","+i+","+j+")'></td>";
                     num++;
                 }
                 texto+="</tr>";
@@ -61,7 +61,7 @@
     }
     
     function voltear(id,i,j){
-        document.getElementById(id).src='Img/'+datos[i][j]+'.jpg';
+        document.getElementById(id).src='img/'+datos[i][j]+'.jpg';
     }
 </script>
 </head>
