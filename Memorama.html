@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.carta {
+    text-align: center;
+    width: 100px;
+    height:100px;	
+} 
+</style>
+<script>
+    var datos = new Array(4);
+    var id;
+    
+    function tabla(){
+    var texto="<table border=1>";
+    var check =[];
+    var i,j,k,num=0,div=0;
+    
+        for (k = 0; k < 8; k++)
+        check[k]=0; 
+            
+        for (i = 0; i < 4; i++) { 
+            datos[i] = new Array(4);
+            texto+="<tr>";
+            for (j = 0; j < 4; j++) { 
+                do{	
+                    num=Math.floor(Math.random()*8)
+                }while(check[num]==2);//repetido
+                check[num]++;
+                datos[i][j]=num;
+                texto+="<td>"+"<img class='carta' src='img/"+num+".jpg'></td>";
+                    
+            }
+            texto+="</tr>";
+    
+        }
+        texto+="</table>";
+    alert(texto);
+    document.getElementById("memorama").innerHTML = texto;
+    setTimeout("regresar()",2000);
+    }
+
+    function regresar(){
+        var i,j,num = 0;
+        var texto = "<table border=1>";
+        
+            for(i=0; i< 4; i++)
+            {
+                texto+="<tr>";
+
+                for(j=0; j< 4; j++)
+                {
+                    texto+="<td>"+"<img src='img/oculta.jpg' class='carta' id='"+num+"' onclick='voltear("+num+","+i+","+j+")'></td>";
+                    num++;
+                }
+                texto+="</tr>";
+            }
+            texto+="</table>";
+            document.getElementById("memorama").innerHTML=texto;
+    }
+    
+    function voltear(id,i,j){
+        document.getElementById(id).src='img/'+datos[i][j]+'.jpg';
+    }
+</script>
+</head>
+<body>
+    <button id="myBtn" onclick="tabla()">MEMORAMA</button>
+    <p id="memorama"></p>
+</body>
+</html> 
